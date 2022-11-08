@@ -1,18 +1,27 @@
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+
+
 
 const Service = ({service}) => {
     const {image, description, title, price} = service;
     return (
         <div>
+            
             <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-200" 
             style={{height: "450px"}}>
                 {/*  <!-- Image --> */}
+                <PhotoProvider>
                 <figure>
+                    <PhotoView src={image}>
                     <img
                         src={image}
                         alt=""
                         className="aspect-video w-full" />
+                    </PhotoView>
                 </figure>
+                </PhotoProvider>
+                
                 {/*  <!-- Body--> */}
                 <div className="p-6">
                     <header className="mb-4">
