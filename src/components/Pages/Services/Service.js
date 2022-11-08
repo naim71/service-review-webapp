@@ -28,7 +28,7 @@ const Service = ({service}) => {
                         <h3 className="text-xl font-medium text-slate-700">
                             {title}
                         </h3>
-                        <p className=" text-emerald-500"> $<span>{price}</span>.99</p>
+                        <p className=" text-emerald-500 text-lg"> $<span>{price}</span>.99</p>
                     </header>
                     <p className=''>
                         {description}
