@@ -8,8 +8,8 @@ const Service = ({service}) => {
     return (
         <div>
             
-            <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-200" 
-            style={{height: "450px"}}>
+            <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-200 h-full" 
+             style={{height: "450px"}}>
                 {/*  <!-- Image --> */}
                 <PhotoProvider>
                 <figure>

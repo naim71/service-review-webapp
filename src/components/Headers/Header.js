@@ -5,7 +5,6 @@ import { AuthContext } from '../../AuthContext/AuthProvider';
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
 
   return (
     <div>
@@ -161,7 +160,8 @@ const Header = () => {
             <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
               {user?.uid ?
                 <>
-                  <button className='relative overflow-hidden cursor-pointer group hover:overflow-visible focus-visible:outline-none ' aria-describedby="tooltip-05"><img src={user.photoURL} className="relative inline-flex items-center justify-center w-10 h-10 text-lg text-white rounded-lg bg-emerald-500 mr-3"
+                  <button className='relative overflow-hidden cursor-pointer group hover:overflow-visible focus-visible:outline-none ' aria-describedby="tooltip-05">
+                  <img src={user.photoURL} className="relative inline-flex items-center justify-center w-10 h-10 text-lg text-white rounded-lg mr-3"
                     alt='' />
                     <span
                       role="tooltip"
