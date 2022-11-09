@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Blog from '../components/Pages/Blog/Blog';
 import Home from '../components/Pages/Home/Home';
 import Signin from '../components/Registration/Signin';
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
                 element: <Blog></Blog>
             }
         ]
+    },
+    {
+        path: '/*', 
+        element: <ErrorPage></ErrorPage>
     }
 ]);
 
