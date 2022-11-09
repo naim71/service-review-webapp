@@ -16,7 +16,9 @@ const ServiceDetails = () => {
                             <p className='text-2xl font-semibold text-emerald-500'>${price}.99</p>
                         </div>
                         <p className='text-lg mt-5 text-justify'>{details}</p>
-                        <button onClick={() => alert('Succesfully added to cart')} className='border-2 border-emerald-500 rounded-md py-1 px-2 text-emerald-500 hover:bg-emerald-500 hover:text-white my-4'>Take Service</button>
+                        <div className='flex justify-center'>
+                        <button onClick={() => alert('Succesfully added to cart')} className='inline-flex border-2 border-emerald-500 rounded-md py-1 px-2 text-emerald-500 hover:bg-emerald-500 hover:text-white my-4'>Take Service</button>
+                        </div>
                     </div>
                 </div>
             </div>
