@@ -1,26 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useContext} from 'react'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext/AuthProvider';
 
 const Signup = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const [error, setError] = useState(null);
 
     const handleSignup = event => {
-
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const confirm = form.confirm.value;
+        const photoURL = form.photoURL.value;
+
+        if(password.length < 6){
+            setError('*Password must be at least 6 characters long')
+            return;
+        }
+
+        if(password !== confirm){
+            setError('*Password did not match')
+            return;
+        }
 
         createUser(email, password)
         .then(result => {
             const user = result.user;
             console.log(user);
             form.reset();
+            handleUpdateUserProfile(name,photoURL);
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            console.error(error);
+            setError(error.message);
+        })
 
+    }
+    const handleUpdateUserProfile = (name, photoURL) =>{
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+        .then(() => {})
+        .catch(error => console.error(error))
     }
 
     return (
@@ -67,6 +93,15 @@ const Signup = () => {
                             </span>
 
                             <input type="password" name='confirm' className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-400 dark:focus:border-emerald-300 focus:ring-emerald-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Confirm Password" required/>
+                        </div>
+                        <div className="relative flex items-center mt-4">
+                            <span className="absolute">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </span>
+
+                            <input type="text" name='photoURL' className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-400 dark:focus:border-emerald-300 focus:ring-emerald-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Photo URL" required/>
                         </div>
 
                         <div className="mt-6">
