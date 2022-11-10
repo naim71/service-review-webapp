@@ -1,36 +1,20 @@
-import React from 'react';
-import Modal from '../../Modal/Modal';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-const ReviewSection = ({ details }) => {
-    const rev1 = details.review1;
-    const rev2 = details.review2;
-    const rev3 = details.review3;
-
+const ReviewSection = ({review}) => {
+    const {img, text,name, email} = review;
     return (
-        <div className='grid md:grid-cols-3 gap-10 my-8 mx-5'>
+        <div className='bg-white'>
             <div>
                 <div className='flex justify-between items-center'>
-                    <img src={rev1.img} alt="" className='w-14 h-14 rounded-full mb-2' />
+                    <img src={img} alt="" className='w-14 h-14 rounded-full mb-2' />
                     <p className='text-lg font-semibold text-yellow-500'>⭐ 5</p>
                 </div>
-                <p className='mb-2'>"<span>{rev1.text}</span>"</p>
-                <p className='font-bold'>- {rev1.name}</p>
-            </div>
-            <div>
+                <p className='mb-2'>"<span>{text}</span>"</p>
                 <div className='flex justify-between items-center'>
-                    <img src={rev2.img} alt="" className='w-14 h-14 rounded-full mb-2' />
-                    <p className='text-lg font-semibold text-yellow-500'>⭐ 5</p>
+                <p className='font-bold'>- {name}</p>
+                <p className='font-bold'>Email: {email}</p>
                 </div>
-                <p className='mb-2'>"<span>{rev2.text}</span>"</p>
-                <p className='font-bold'>- {rev2.name}</p>
-            </div>
-            <div>
-                <div className='flex justify-between items-center'>
-                    <img src={rev3.img} alt="" className='w-14 h-14 rounded-full mb-2' />
-                    <p className='text-lg font-semibold text-yellow-500'>⭐ 5</p>
-                </div>
-                <p className='mb-2'>"<span>{rev3.text}</span>"</p>
-                <p className='font-bold'>- {rev3.name}</p>
             </div>
         </div>
     );

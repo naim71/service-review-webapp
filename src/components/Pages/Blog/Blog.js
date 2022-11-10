@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Blog = () => {
+    
+
     return (
         <div>
             <p className='md:text-4xl text-center font-medium text-slate-700 mt-16'>Questions & Answers</p>

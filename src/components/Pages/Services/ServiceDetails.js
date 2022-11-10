@@ -1,14 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContext/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
+import Mymodal from '../../../Modal/Mymodal';
 import ReviewSection from '../../Review/ReviewSection';
 
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
+    const [showModal, setShowModal] = useState(false);
+    const [reviews, setReviews] = useState([]);
     const service = useLoaderData();
-    const { details, image, title, price } = service;
-    const reviewDetails = service.review;
+    const { _id, details, image, title, price } = service;
+    
+    useEffect(()=>{
+        fetch(`http://localhost:5000/reviews/${_id}`)
+        .then(res => res.json())
+        .then(data => setReviews(data.review))
+    })
+    
+    const handleOnClose = () => setShowModal(false);
 
     return (
         <div>
@@ -26,15 +37,22 @@ const ServiceDetails = () => {
                         </div>
                     </div>
                 </div>
-                <p className='text-3xl font-bold text-[#1F2837] text-center mb-2'>Customer Feedback</p>
-                
+                <div>
+                    <p className='text-3xl font-bold text-[#1F2837] text-center mb-2'>Customer Feedback
+                    </p>
+                    <p className='text-right'>
+                    <button onClick={() => setShowModal(true)} className='bg-emerald-500 hover:bg-emerald-700 text-white p-2 rounded-lg mx-auto'>+ Add Review</button>
+                    </p>
+                    <Mymodal onClose={handleOnClose} visible={showModal}/>
+                </div>
 
-                <div className=''>
+                <div className='grid md:grid-cols-3 gap-10 my-8 mx-5'>
                     {
-                        reviewDetails.map(details => <ReviewSection
-                            key={details.name}
-                            details={details}
+                        reviews.map(review => <ReviewSection
+                        key={review.email}
+                        review={review}
                         >
+
                         </ReviewSection>)
                     }
                 </div>

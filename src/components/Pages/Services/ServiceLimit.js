@@ -4,7 +4,6 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 
 const ServiceLimit = ({serviceLimit}) => {
-    console.log(serviceLimit);
     const {image, description, title, price, _id} = serviceLimit;
     return (
         <div>

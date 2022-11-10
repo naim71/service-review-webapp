@@ -5,6 +5,17 @@ const AddService = () => {
     const handleAddService = event =>{
         event.preventDefault();
         console.log(serviceData);
+        fetch('http://localhost:5000/services',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(serviceData)
+        })
+        .then(res => res.json())
+        .then(data => {console.log(data)})
+
+        
     } 
 
     const handleInputBlur = event =>{
@@ -25,7 +36,7 @@ const AddService = () => {
                     </div>
                     <div className='mb-5'>
                         <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Short Description</label>
-                        <input onBlur={handleInputBlur} name='description' type="text" id="last_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-96 md:h-16 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" maxLength = "100" placeholder="maximum 100 characters" required="" />
+                        <input onBlur={handleInputBlur} name='description' type="text" id="last_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-96 md:h-16 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" maxLength = "90" placeholder="maximum 100 characters" required="" />
                     </div>
                     <div className='mb-5'>
                         <label htmlFor="company" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Details</label>
@@ -33,7 +44,7 @@ const AddService = () => {
                     </div>
                     <div className='mb-5'>
                         <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Price</label>
-                        <input onBlur={handleInputBlur} name='price' type="number" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-74 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="$120" required="" />
+                        <input onBlur={handleInputBlur} name='price' type="number" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-74 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="120" required="" />
                     </div>
                     <div className='mb-5'>
                         <label htmlFor="website" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Image URL</label>

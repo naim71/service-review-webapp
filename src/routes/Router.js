@@ -8,6 +8,7 @@ import ServiceDetails from '../components/Pages/Services/ServiceDetails';
 import Services from '../components/Pages/Services/Services';
 import Signin from '../components/Registration/Signin';
 import Signup from '../components/Registration/Signup';
+import ReviewSection from '../components/Review/ReviewSection';
 import Main from '../layout/Main';
 
 export const router = createBrowserRouter([
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
                 path: "/addService",
                 element: <AddService></AddService>
             },
+            {
+                
+            }
+
         ]
     },
     {
