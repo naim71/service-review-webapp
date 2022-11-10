@@ -1,7 +1,7 @@
 import React from 'react';
+import Modal from '../../Modal/Modal';
 
 const ReviewSection = ({ details }) => {
-    console.log(details.review1);
     const rev1 = details.review1;
     const rev2 = details.review2;
     const rev3 = details.review3;

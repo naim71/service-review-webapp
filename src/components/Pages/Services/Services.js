@@ -12,7 +12,7 @@ const Services = () => {
     },[])
 
     return (
-        <div className='grid md:grid-cols-3 gap-10 md:mx-36 mx-10 my-20'>
+        <div className='grid md:grid-cols-3 gap-10 md:mx-36 mx-10 mt-20 mb-10'>
             {
                 services.map(service => <Service 
                 key={service.id}

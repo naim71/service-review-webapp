@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ServiceLimit from '../Services/ServiceLimit';
 import Services from '../Services/Services';
 
 const Home = () => {
+    const [services, setServices] = useState([]);
+    
+    useEffect(() =>{
+        fetch('http://localhost:5000/servicesById')
+        .then(res => res.json())
+        .then(data => setServices(data))
+    },[])
+
     return (
         <div>
             {/* background image */}
@@ -20,7 +30,17 @@ const Home = () => {
             </div>
 
             {/* service section */}
-            <Services></Services>
+            <div className='grid md:grid-cols-3 gap-10 md:mx-36 mx-10 mt-20 mb-10'>
+            {
+                services.map(serviceLimit => <ServiceLimit
+                    key={serviceLimit.id}
+                    serviceLimit={serviceLimit}
+                >
+                </ServiceLimit>)
+            }
+            </div>
+            
+            <Link to="/services" className='flex justify-center'><button className='bg-slate-800 hover:bg-slate-900 text-white px-4 py-2 rounded-md shadow-xl inline-flex justify-center mb-10'>View All</button></Link>
         </div>
     );
 };
