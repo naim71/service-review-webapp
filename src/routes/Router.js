@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import AddService from '../components/AddService.js/AddService';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Blog from '../components/Pages/Blog/Blog';
 import Home from '../components/Pages/Home/Home';
@@ -42,7 +43,11 @@ export const router = createBrowserRouter([
             {
                 path: "/services",
                 element: <Services></Services>
-            }
+            },
+            {
+                path: "/addService",
+                element: <AddService></AddService>
+            },
         ]
     },
     {
