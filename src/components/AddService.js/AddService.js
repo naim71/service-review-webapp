@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import useDocumentTitle from '../../hook/useDocumentTitle';
 
 const AddService = () => {
+    useDocumentTitle('Add Service');
     const [serviceData, setServiceData ] = useState({});
     const handleAddService = event =>{
         event.preventDefault();

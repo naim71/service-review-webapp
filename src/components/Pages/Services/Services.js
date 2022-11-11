@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import useDocumentTitle from '../../../hook/useDocumentTitle';
 import Service from './Service';
 
 
 const Services = () => {
+    useDocumentTitle('Services');
     const [services, setServices] = useState(null);
 
     useEffect(() => {

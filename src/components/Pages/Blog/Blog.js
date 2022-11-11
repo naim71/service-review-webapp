@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import useDocumentTitle from '../../../hook/useDocumentTitle';
 
 const Blog = () => {
+    useDocumentTitle('Blogs')
     
 
     return (
+
         <div>
             <p className='md:text-4xl text-center font-medium text-slate-700 mt-16'>Questions & Answers</p>
             <section className="w-3/4 divide-y rounded divide-slate-200 mx-auto my-16">

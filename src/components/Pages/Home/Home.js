@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useTitle from '../../../hooks/useTitle';
+import useDocumentTitle from '../../../hook/useDocumentTitle';
 import ServiceLimit from '../Services/ServiceLimit';
-import Services from '../Services/Services';
 import Section from './Section';
 
 const Home = () => {
