@@ -27,7 +27,7 @@ const Mymodal = ({ visible, onClose, service }) => {
             ]
         }    
 
-        fetch('http://localhost:5000/reviews',{
+        fetch('http://localhost:5000/reviews1',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
