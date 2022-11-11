@@ -8,7 +8,7 @@ const Home = () => {
     const [services, setServices] = useState([]);
     
     useEffect(() =>{
-        fetch('http://localhost:5000/servicesById')
+        fetch('https://b6a11-service-review-server-side-naim71.vercel.app/servicesById')
         .then(res => res.json())
         .then(data => setServices(data))
     },[])

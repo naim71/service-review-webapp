@@ -12,7 +12,7 @@ const ServiceDetails = () => {
     const service = useLoaderData();
     const { _id, details, image, title, price } = service;
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews1/${_id}`)
+        fetch(`https://b6a11-service-review-server-side-naim71.vercel.app/reviews1/${_id}`)
         .then(res => res.json())
         .then(data => setReviews(data))
     })

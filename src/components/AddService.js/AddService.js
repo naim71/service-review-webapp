@@ -7,7 +7,7 @@ const AddService = () => {
     const handleAddService = event =>{
         event.preventDefault();
         console.log(serviceData);
-        fetch('http://localhost:5000/services',{
+        fetch('https://b6a11-service-review-server-side-naim71.vercel.app/services',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

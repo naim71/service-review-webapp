@@ -13,7 +13,7 @@ const MyReviewCard = ({review}) => {
         const agree = window.confirm(`Are you sure you want to delete the Review of ${id}?`)
         if(agree){
             //console.log('Delete User email: ', id);
-            fetch(`http://localhost:5000/reviews1/${id}`,{
+            fetch(`https://b6a11-service-review-server-side-naim71.vercel.app/reviews1/${id}`,{
                 method: 'DELETE'
             })
             .then(res => res.json())

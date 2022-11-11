@@ -27,7 +27,7 @@ const Mymodal = ({ visible, onClose, service }) => {
             ]
         }    
 
-        fetch('http://localhost:5000/reviews1',{
+        fetch('https://b6a11-service-review-server-side-naim71.vercel.app/reviews1',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
