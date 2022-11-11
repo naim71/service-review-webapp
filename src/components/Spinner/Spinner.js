@@ -1,31 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Service from './Service';
+import React from 'react';
 
-
-const Services = () => {
-    const [services, setServices] = useState(null);
-
-    useEffect(() => {
-        fetch('http://localhost:5000/services')
-            .then(res => res.json())
-            .then(data => setServices(data))
-    })
-
+const Spinner = () => {
     return (
-        <div className='grid md:grid-cols-3 gap-10 md:mx-36 mx-10 mt-20 mb-10'>
-            {services ?
-                <>
-                    {
-                        services.map(service => <Service
-                            key={service._id}
-                            service={service}
-                        >
-                        </Service>)
-                    }
-                </>
-                :
-
-                <div className='mx-auto flex justify-center items-center w-96'>
+        <div>
+            <div className='mx-auto flex justify-center items-center w-96'>
                     {/*<!-- Component: Basic base sized 1/2 spinner  --> */}
                     <svg
                         viewBox="0 0 24 24"
@@ -53,12 +31,8 @@ const Services = () => {
                     </svg>
                     {/*<!-- End Basic base sized 1/2 spinner  --> */}
                 </div>
-
-
-            }
-
         </div>
     );
 };
 
-export default Services;
+export default Spinner;

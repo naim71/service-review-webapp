@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContext/AuthProvider';
-import useTitle from '../../../hooks/useTitle';
 import Mymodal from '../../../Modal/Mymodal';
-import ReviewSection from '../../Review/ReviewSection';
+import Review from '../../Review/Review';
 
 
 const ServiceDetails = () => {
@@ -16,7 +15,7 @@ const ServiceDetails = () => {
     useEffect(()=>{
         fetch(`http://localhost:5000/reviews/${_id}`)
         .then(res => res.json())
-        .then(data => setReviews(data.review))
+        .then(data => setReviews(data))
     })
     
     const handleOnClose = () => setShowModal(false);
@@ -43,17 +42,16 @@ const ServiceDetails = () => {
                     <p className='text-right'>
                     <button onClick={() => setShowModal(true)} className='bg-emerald-500 hover:bg-emerald-700 text-white p-2 rounded-lg mx-auto'>+ Add Review</button>
                     </p>
-                    <Mymodal onClose={handleOnClose} visible={showModal}/>
+                    <Mymodal onClose={handleOnClose} visible={showModal} service={service}/>
                 </div>
 
-                <div className='grid md:grid-cols-3 gap-10 my-8 mx-5'>
+                <div className='grid md:grid-cols-3 gap-10'>
                     {
-                        reviews.map(review => <ReviewSection
-                        key={review.email}
-                        review={review}
+                        reviews.map(rev =><Review
+                        key={rev._id}
+                        rev={rev}
                         >
-
-                        </ReviewSection>)
+                        </Review>)
                     }
                 </div>
             </div>

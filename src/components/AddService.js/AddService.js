@@ -13,7 +13,10 @@ const AddService = () => {
             body: JSON.stringify(serviceData)
         })
         .then(res => res.json())
-        .then(data => {console.log(data)})
+        .then(data => {
+            console.log(data)
+            
+        })
 
         
     } 

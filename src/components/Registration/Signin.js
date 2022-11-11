@@ -1,24 +1,29 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext/AuthProvider';
-import useTitle from '../../hooks/useTitle';
+
 
 const Signin = () => {
-    useTitle('Login')
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [error, setError] = useState('');
     const {loginUser, providerLogin} = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleSignIn = () =>{
         providerLogin(googleProvider)
         .then(result =>{
             const user = result.user;
             console.log(user);
+            navigate(from, {replace: true});
         })
         .catch(error => {
             console.error(error);
-            //setError(error.message);
+            setError(error.message);
         })
     }
 
@@ -33,10 +38,11 @@ const Signin = () => {
             const user = result.user;
             console.log(user);
             form.reset();
+            navigate(from, {replace: true});
         })
         .catch(error => {
             console.error(error);
-            //setError(error.message);
+            setError(error.message);
 
         });
 
@@ -55,7 +61,7 @@ const Signin = () => {
                                 </svg>
                             </span>
 
-                            <input type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-400 dark:focus:border-emerald-300 focus:ring-emerald-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" name='email'/>
+                            <input type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-400 dark:focus:border-emerald-300 focus:ring-emerald-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" name='email' required/>
                         </div>
 
                         <div className="relative flex items-center mt-4">
@@ -65,8 +71,10 @@ const Signin = () => {
                                 </svg>
                             </span>
 
-                            <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-400 dark:focus:border-emerald-300 focus:ring-emerald-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" name='password'/>
+                            <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-emerald-400 dark:focus:border-emerald-300 focus:ring-emerald-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" name='password' required/>
                         </div>
+
+                        <p className='text-red-600'>{error}</p>
 
                         <div className="mt-6">
                             <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize rounded bg-emerald-500 shadow-md shadow-emerald-200 transition duration-300 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200 focus:bg-emerald-700 focus:shadow-sm focus:shadow-emerald-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">

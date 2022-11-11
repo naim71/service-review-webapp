@@ -8,8 +8,10 @@ import ServiceDetails from '../components/Pages/Services/ServiceDetails';
 import Services from '../components/Pages/Services/Services';
 import Signin from '../components/Registration/Signin';
 import Signup from '../components/Registration/Signup';
+import MyReviews from '../components/Review/MyReviews';
 import ReviewSection from '../components/Review/ReviewSection';
 import Main from '../layout/Main';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const router = createBrowserRouter([
     {
@@ -47,10 +49,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/addService",
-                element: <AddService></AddService>
+                element: <PrivateRoute><AddService></AddService></PrivateRoute>
             },
             {
-                
+               path: "/myreviews",
+               element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
+               loader: ()=> fetch('http://localhost:5000/reviews')
             }
 
         ]
